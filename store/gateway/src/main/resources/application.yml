@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: gateway
+server:
+  port: 9441
+  servlet:
+    context-path: /gateway
+
+#Eureka
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:9440/eureka
+      fetch-registry: true
+      register-with-eureka: true
+  instance: 
+    prefer-ip-address: true
+
+
+#Zuul
+zuul:
+  sensitive-headers: Cookie
+  
+jwt:
+  config:
+    login-url: /auth/login
+#  
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 60000
+
