@@ -1,0 +1,23 @@
+server:
+  port: 9443
+spring:
+  application:
+    name: api
+  data:
+    mongodb:
+     authentication-database: admin
+     database: web_store
+     port: 27017
+     host: localhost
+     username: root
+     password: example
+  
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url: 
+      defaultZone: http://localhost:9440/eureka/
+    register-with-eureka: true  
+
+
