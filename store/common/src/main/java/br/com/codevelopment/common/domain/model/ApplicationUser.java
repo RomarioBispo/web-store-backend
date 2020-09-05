@@ -1,5 +1,8 @@
 package br.com.codevelopment.common.domain.model;
 
+import java.io.Serializable;
+import java.time.LocalDate;
+
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
@@ -35,7 +38,17 @@ public class ApplicationUser implements AbstractEntity {
 	
 	private String username;
 	
+	private LocalDate birthDate;
+	
+	private String rg;
+	
+	private String cpf;
+	
+	private String email;
+	
 	private String password;
+	
+	private Address address;
 	
 	@Builder.Default
 	private String role = "USER";
@@ -50,6 +63,17 @@ public class ApplicationUser implements AbstractEntity {
 		this.username = user.getUsername();
 		this.password = user.getPassword();
 		this.role = user.getRole();
+	}
+	
+	@Data
+	public static class Address implements Serializable {
+		private static final long serialVersionUID = 10L;
+		private String country;
+		private String state;
+		private String city;
+		private String zipcode;
+		private String street;
+		private int number;
 	}
 
 }
