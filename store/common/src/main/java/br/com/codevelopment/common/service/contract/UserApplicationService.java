@@ -1,4 +1,4 @@
-package br.com.codevelopment.common.service;
+package br.com.codevelopment.common.service.contract;
 
 import java.util.List;
 

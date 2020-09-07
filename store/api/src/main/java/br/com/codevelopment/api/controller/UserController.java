@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.codevelopment.common.domain.model.dto.ApplicationUserDTO;
-import br.com.codevelopment.common.service.UserApplicationService;
+import br.com.codevelopment.common.service.contract.UserApplicationService;
 import lombok.RequiredArgsConstructor;
 
 @RestController

@@ -1,4 +1,4 @@
-package br.com.codevelopment.common.service;
+package br.com.codevelopment.common.service.impl;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,6 +12,7 @@ import br.com.codevelopment.common.domain.model.ApplicationUser;
 import br.com.codevelopment.common.domain.model.dto.ApplicationUserDTO;
 import br.com.codevelopment.common.exception.UserNotFoundException;
 import br.com.codevelopment.common.repository.ApplicationUserRepository;
+import br.com.codevelopment.common.service.contract.UserApplicationService;
 import lombok.AllArgsConstructor;
 
 @Service
