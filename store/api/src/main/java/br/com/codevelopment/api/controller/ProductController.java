@@ -14,50 +14,50 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.codevelopment.common.domain.model.dto.ApplicationUserDTO;
-import br.com.codevelopment.common.service.contract.UserApplicationService;
+import br.com.codevelopment.common.domain.model.dto.ProductDTO;
+import br.com.codevelopment.common.service.contract.ProductService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/v1/user")
+@RequestMapping("/v1/product")
 @RequiredArgsConstructor	
-public class UserController {
+public class ProductController {
 	
-	private final UserApplicationService userService;
+	private final ProductService poductService;
 
 	@PostMapping
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@ResponseBody
-	public void createUser(@RequestBody ApplicationUserDTO userDTO) {
-		userService.create(userDTO);
+	public void createProduct(@RequestBody ProductDTO productDTO) {
+		poductService.create(productDTO);
 	}
 	
 	@GetMapping
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public List<ApplicationUserDTO> findAllUser() {
-		return userService.findAll();
+	public List<ProductDTO> findAllProduct() {
+		return poductService.findAll();
 	}
 	
 	@GetMapping("/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public ApplicationUserDTO findUserById(@PathVariable String id) {
-		return userService.findById(id);
+	public ProductDTO findProductById(@PathVariable String id) {
+		return poductService.findById(id);
 	}
 	
 	@PutMapping("/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody()
-	public void updateUser(@PathVariable String id, @RequestBody ApplicationUserDTO userDTO) {
-		userService.update(userDTO, id);
+	public void updateProduct(@PathVariable String id, @RequestBody ProductDTO productDTO) {
+		poductService.update(productDTO, id);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	@ResponseBody()
-	public void deleteUser(@PathVariable String id) {
-		userService.deleteById(id);
+	public void deleteProduct(@PathVariable String id) {
+		poductService.deleteById(id);
 	}
 
 }

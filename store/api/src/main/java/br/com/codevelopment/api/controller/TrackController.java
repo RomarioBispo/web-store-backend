@@ -14,50 +14,50 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.codevelopment.common.domain.model.dto.ApplicationUserDTO;
-import br.com.codevelopment.common.service.contract.UserApplicationService;
+import br.com.codevelopment.common.domain.model.dto.TrackDTO;
+import br.com.codevelopment.common.service.contract.TrackService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/v1/user")
+@RequestMapping("/v1/track")
 @RequiredArgsConstructor	
-public class UserController {
+public class TrackController {
 	
-	private final UserApplicationService userService;
+	private final TrackService trackService;
 
 	@PostMapping
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@ResponseBody
-	public void createUser(@RequestBody ApplicationUserDTO userDTO) {
-		userService.create(userDTO);
+	public void createTrack(@RequestBody TrackDTO trackDTO) {
+		trackService.create(trackDTO);
 	}
 	
 	@GetMapping
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public List<ApplicationUserDTO> findAllUser() {
-		return userService.findAll();
+	public List<TrackDTO> findAllTrack() {
+		return trackService.findAll();
 	}
 	
 	@GetMapping("/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public ApplicationUserDTO findUserById(@PathVariable String id) {
-		return userService.findById(id);
+	public TrackDTO findTrackById(@PathVariable String id) {
+		return trackService.findById(id);
 	}
 	
 	@PutMapping("/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody()
-	public void updateUser(@PathVariable String id, @RequestBody ApplicationUserDTO userDTO) {
-		userService.update(userDTO, id);
+	public void updateTrack(@PathVariable String id, @RequestBody TrackDTO trackDTO) {
+		trackService.update(trackDTO, id);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	@ResponseBody()
-	public void deleteUser(@PathVariable String id) {
-		userService.deleteById(id);
+	public void deleteTrack(@PathVariable String id) {
+		trackService.deleteById(id);
 	}
 
 }
