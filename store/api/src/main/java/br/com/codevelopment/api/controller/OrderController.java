@@ -14,50 +14,50 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.codevelopment.common.domain.model.dto.ApplicationUserDTO;
-import br.com.codevelopment.common.service.contract.UserApplicationService;
+import br.com.codevelopment.common.domain.model.dto.OrderDTO;
+import br.com.codevelopment.common.service.contract.OrderService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/v1/user")
+@RequestMapping("/v1/order")
 @RequiredArgsConstructor	
-public class UserController {
+public class OrderController {
 	
-	private final UserApplicationService userService;
+	private final OrderService orderService;
 
 	@PostMapping
 	@ResponseStatus(value = HttpStatus.CREATED)
 	@ResponseBody
-	public void createUser(@RequestBody ApplicationUserDTO userDTO) {
-		userService.create(userDTO);
+	public void createOrder(@RequestBody OrderDTO orderDTO) {
+		orderService.create(orderDTO);
 	}
 	
 	@GetMapping
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public List<ApplicationUserDTO> findAllUser() {
-		return userService.findAll();
+	public List<OrderDTO> findAllOrder() {
+		return orderService.findAll();
 	}
 	
 	@GetMapping("/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public ApplicationUserDTO findUserById(@PathVariable String id) {
-		return userService.findById(id);
+	public OrderDTO findOrderById(@PathVariable String id) {
+		return orderService.findById(id);
 	}
 	
 	@PutMapping("/{id}")
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody()
-	public void updateUser(@PathVariable String id, @RequestBody ApplicationUserDTO userDTO) {
-		userService.update(userDTO, id);
+	public void updateOrder(@PathVariable String id, @RequestBody OrderDTO userDTO) {
+		orderService.update(userDTO, id);
 	}
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(value = HttpStatus.NO_CONTENT)
 	@ResponseBody()
-	public void deleteUser(@PathVariable String id) {
-		userService.deleteById(id);
+	public void deleteOrder(@PathVariable String id) {
+		orderService.deleteById(id);
 	}
 
 }
