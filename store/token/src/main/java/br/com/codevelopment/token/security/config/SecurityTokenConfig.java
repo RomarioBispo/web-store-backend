@@ -3,6 +3,7 @@ package br.com.codevelopment.token.security.config;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -35,7 +36,8 @@ public class SecurityTokenConfig extends WebSecurityConfigurerAdapter{
                     "/configuration/security",
                     "/swagger-ui.html",
                     "/webjars/**").permitAll()
-			.antMatchers("/api/v1/**").hasAuthority("ADMIN")
+			.antMatchers(HttpMethod.POST, "/v1/user").permitAll()
+			.antMatchers("/v1/**").hasAnyRole("ADMIN","USER")
 			.antMatchers("/auth/user/info").hasAnyRole("ADMIN", "USER")
 			.anyRequest().authenticated();
 	}

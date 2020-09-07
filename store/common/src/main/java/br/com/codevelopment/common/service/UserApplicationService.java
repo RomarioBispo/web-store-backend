@@ -2,7 +2,6 @@ package br.com.codevelopment.common.service;
 
 import java.util.List;
 
-import br.com.codevelopment.common.domain.model.ApplicationUser;
 import br.com.codevelopment.common.domain.model.dto.ApplicationUserDTO;
 
 public interface UserApplicationService {

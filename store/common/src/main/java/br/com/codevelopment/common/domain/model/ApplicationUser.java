@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -35,15 +36,19 @@ public class ApplicationUser implements AbstractEntity {
 	@JsonIgnore
 	@EqualsAndHashCode.Include
 	private String id;
-	
+
+	@Indexed(name = "username_index", unique = true)
 	private String username;
 	
 	private LocalDate birthDate;
 	
+	@Indexed(name = "rg_index", unique = true)
 	private String rg;
 	
+	@Indexed(name = "cpf_index", unique = true)
 	private String cpf;
 	
+	@Indexed(name = "email_index", unique = true)
 	private String email;
 	
 	private String password;

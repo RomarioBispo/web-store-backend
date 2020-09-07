@@ -11,6 +11,7 @@ spring:
      host: localhost
      username: root
      password: example
+     auto-index-creation: true
   
 eureka:
   instance:
@@ -19,5 +20,3 @@ eureka:
     service-url: 
       defaultZone: http://localhost:9440/eureka/
     register-with-eureka: true  
-
-

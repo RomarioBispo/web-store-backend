@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.springframework.stereotype.Service;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 import br.com.codevelopment.common.domain.model.ApplicationUser;
 import br.com.codevelopment.common.domain.model.dto.ApplicationUserDTO;
@@ -18,10 +19,12 @@ import lombok.AllArgsConstructor;
 public class UserApplicationServiceImpl implements UserApplicationService {
 	private final ApplicationUserRepository userRepository;
 	private final ModelMapper mapper;
+	private final BCryptPasswordEncoder encoder;
 
 	@Override
 	public void create(ApplicationUserDTO userDTO) {
 		ApplicationUser user = mapper.map(userDTO, ApplicationUser.class);
+		user.setPassword(encoder.encode(user.getPassword()));
 		userRepository.save(user);
 	}
 
@@ -29,6 +32,7 @@ public class UserApplicationServiceImpl implements UserApplicationService {
 	public void update(ApplicationUserDTO userDTO, String id) {
 		ApplicationUser user = mapper.map(userDTO, ApplicationUser.class);
 		user.setId(id);
+		user.setPassword(encoder.encode(user.getPassword()));
 		userRepository.save(user);
 	}
 

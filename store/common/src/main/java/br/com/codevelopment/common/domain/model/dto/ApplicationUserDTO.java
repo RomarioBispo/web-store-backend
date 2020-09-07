@@ -3,6 +3,7 @@ package br.com.codevelopment.common.domain.model.dto;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -16,6 +17,7 @@ public class ApplicationUserDTO {
 	
 	private String username;
 	
+	@JsonFormat(pattern="dd/MM/yyyy")
 	private LocalDate birthDate;
 	
 	private String rg;
